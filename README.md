@@ -2,8 +2,8 @@
 
 Authored by Sofia Robb
 
-## Need to update this info for this module
 Works with the Trpdownload_api module to create 
+
  1) CSV file for download that contains:
  -  NBCluster Feature uniquename  
  -  NBCluster Feature name
