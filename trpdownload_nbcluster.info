@@ -1,5 +1,5 @@
 name = Tripal Download NB Clusters 
-description = Uses the Tripal Download API to download a feature's Rosetta Stone translation results. Works with View:  Search An Zeng Single Cell  (for searching NB Clusters)
+description = Uses the Tripal Download API to download a file of gene ids or FASTA from search results from my view. Works with View:  Search An Zeng Single Cell  (for searching NB Clusters)
 core = 7.x
 package = Tripal Extensions
 dependencies[] = tripal_core
