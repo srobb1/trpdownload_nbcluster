@@ -3,12 +3,36 @@
 Authored by Sofia Robb
 
 ## Need to update this info for this module
-Works with the Trpdownload_api module to create a file for download that contains:
--  Feature uniquename  
--  tissue type from the [tripal-analysis-expression](http://tripal.info/extensions/modules/tripal-analysis-expression)  
--  expression value from the [tripal-analysis-expression](http://tripal.info/extensions/modules/tripal-analysis-expression)
+Works with the Trpdownload_api module to create 
+ 1) CSV file for download that contains:
+ -  NBCluster Feature uniquename  
+ -  NBCluster Feature name
+ 2) FASTA file for download that contains
+ -  NBCluster Feature uniquename
+ -  NBCluster Feature name
+ -  NBCluster Feature sequence  
 
 
 To use add the following code to a feature node pane:
 
-`<a href="<?php print url('chado/expression/csv', array('query' => array('feature_id'=>$feature->feature_id))) ?>">Download</a>`
+Get the query from the form and append to the urls below. This is code from a 'Footer: Global: Text area' in my view.
+```
+<?php 
+
+$url_array = array();
+foreach ($_GET as $key => $value) { 
+     if ( $key != 'q' ){   
+          $parts = preg_split('/\s+/', $value);
+          $v=join(' ', $parts);
+          $url_array[] = "$key=$v";
+     }
+}
+
+$fasta_url = "/chado/nbcluster/fasta?"   .  join('&', $url_array);
+$csv_url = "/chado/nbcluster/csv?"  .  join('&', $url_array); 
+
+print 'Download Results: <a href="' . $fasta_url . '">FASTA</a> | <a href="' . $csv_url . '">CSV</a><p>';
+
+
+?>
+```
